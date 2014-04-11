@@ -30,7 +30,7 @@ CONFIGURE_ARGS=	--sbindir=${PREFIX}/sbin \
 
 CONFIGURE_ENV+=	LD="${CXX}"
 CONFIGURE_ENV+=	SHUTDOWN="/sbin/shutdown"
-#CONFIGURE_ENV+=	LIBS="-lstdc++"
+CONFIGURE_ENV+=	LIBS="-lstdc++"
 CPPFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
 LDFLAGS+=	-L${LOCALBASE}/lib
 CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
