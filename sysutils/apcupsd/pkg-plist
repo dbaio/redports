@@ -1,0 +1,53 @@
+sbin/apcupsd
+sbin/apcaccess
+sbin/apctest
+sbin/smtp
+@unexec if cmp -s %D/%%ETCDIR%%/apcupsd.conf.sample %D/%%ETCDIR%%/apcupsd.conf; then rm -f %D/%%ETCDIR%%/apcupsd.conf; fi
+%%ETCDIR%%/apcupsd.conf.sample
+@exec if [ ! -f %D/%%ETCDIR%%/apcupsd.conf ] ; then cp -p %D/%%ETCDIR%%/apcupsd.conf.sample %D/%%ETCDIR%%/apcupsd.conf; fi
+@unexec if cmp -s %D/%%ETCDIR%%/apccontrol.sample %D/%%ETCDIR%%/apccontrol; then rm -f %D/%%ETCDIR%%/apccontrol; fi
+%%ETCDIR%%/apccontrol.sample
+@exec if [ ! -f %D/%%ETCDIR%%/apccontrol ] ; then cp -p %D/%%ETCDIR%%/apccontrol.sample %D/%%ETCDIR%%/apccontrol; fi
+@unexec if cmp -s %D/%%ETCDIR%%/changeme.sample %D/%%ETCDIR%%/changeme; then rm -f %D/%%ETCDIR%%/changeme; fi
+%%ETCDIR%%/changeme.sample
+@exec if [ ! -f %D/%%ETCDIR%%/changeme ] ; then cp -p %D/%%ETCDIR%%/changeme.sample %D/%%ETCDIR%%/changeme; fi
+@unexec if cmp -s %D/%%ETCDIR%%/commfailure.sample %D/%%ETCDIR%%/commfailure; then rm -f %D/%%ETCDIR%%/commfailure; fi
+%%ETCDIR%%/commfailure.sample
+@exec if [ ! -f %D/%%ETCDIR%%/commfailure ] ; then cp -p %D/%%ETCDIR%%/commfailure.sample %D/%%ETCDIR%%/commfailure; fi
+@unexec if cmp -s %D/%%ETCDIR%%/commok.sample %D/%%ETCDIR%%/commok; then rm -f %D/%%ETCDIR%%/commok; fi
+%%ETCDIR%%/commok.sample
+@exec if [ ! -f %D/%%ETCDIR%%/commok ] ; then cp -p %D/%%ETCDIR%%/commok.sample %D/%%ETCDIR%%/commok; fi
+@unexec if cmp -s %D/%%ETCDIR%%/onbattery.sample %D/%%ETCDIR%%/onbattery; then rm -f %D/%%ETCDIR%%/onbattery; fi
+%%ETCDIR%%/onbattery.sample
+@exec if [ ! -f %D/%%ETCDIR%%/onbattery ] ; then cp -p %D/%%ETCDIR%%/onbattery.sample %D/%%ETCDIR%%/onbattery; fi
+@unexec if cmp -s %D/%%ETCDIR%%/offbattery.sample %D/%%ETCDIR%%/offbattery; then rm -f %D/%%ETCDIR%%/offbattery; fi
+%%ETCDIR%%/offbattery.sample
+@exec if [ ! -f %D/%%ETCDIR%%/offbattery ] ; then cp -p %D/%%ETCDIR%%/offbattery.sample %D/%%ETCDIR%%/offbattery; fi
+%%CGI%%@unexec if cmp -s %D/%%ETCDIR%%/apcupsd.css.sample %D/%%ETCDIR%%/apcupsd.css; then rm -f %D/%%ETCDIR%%/apcupsd.css; fi
+%%CGI%%%%ETCDIR%%/apcupsd.css.sample
+%%CGI%%@exec if [ ! -f %D/%%ETCDIR%%/apcupsd.css ] ; then cp -p %D/%%ETCDIR%%/apcupsd.css.sample %D/%%ETCDIR%%/apcupsd.css; fi
+%%CGI%%@unexec if cmp -s %D/%%ETCDIR%%/hosts.conf.sample %D/%%ETCDIR%%/hosts.conf; then rm -f %D/%%ETCDIR%%/hosts.conf; fi
+%%CGI%%%%ETCDIR%%/hosts.conf.sample
+%%CGI%%@exec if [ ! -f %D/%%ETCDIR%%/hosts.conf ] ; then cp -p %D/%%ETCDIR%%/hosts.conf.sample %D/%%ETCDIR%%/hosts.conf; fi
+%%CGI%%@unexec if cmp -s %D/%%ETCDIR%%/multimon.conf.sample %D/%%ETCDIR%%/multimon.conf; then rm -f %D/%%ETCDIR%%/multimon.conf; fi
+%%CGI%%%%ETCDIR%%/multimon.conf.sample
+%%CGI%%@exec if [ ! -f %D/%%ETCDIR%%/multimon.conf ] ; then cp -p %D/%%ETCDIR%%/multimon.conf.sample %D/%%ETCDIR%%/multimon.conf; fi
+%%CGI%%%%ETCDIR%%/cgi/multimon.cgi
+%%CGI%%%%ETCDIR%%/cgi/upsfstats.cgi
+%%CGI%%%%ETCDIR%%/cgi/upsimage.cgi
+%%CGI%%%%ETCDIR%%/cgi/upsstats.cgi
+%%CGI%%@dirrm %%ETCDIR%%/cgi
+%%GAPCMON%%bin/gapcmon
+%%GAPCMON%%share/applications/gapcmon.desktop
+%%GAPCMON%%share/pixmaps/apcupsd.png
+%%GAPCMON%%share/pixmaps/charging.png
+%%GAPCMON%%share/pixmaps/gapc_prefs.png
+%%GAPCMON%%share/pixmaps/onbatt.png
+%%GAPCMON%%share/pixmaps/online.png
+%%GAPCMON%%share/pixmaps/unplugged.png
+man/man5/apcupsd.conf.5.gz
+man/man8/apcaccess.8.gz
+man/man8/apccontrol.8.gz
+man/man8/apctest.8.gz
+man/man8/apcupsd.8.gz
+@dirrmtry %%ETCDIR%%
