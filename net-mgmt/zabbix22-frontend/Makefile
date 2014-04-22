@@ -1,5 +1,5 @@
 # Created by: Jim Riggs <ports@christianserving.org>
-# $FreeBSD: head/net-mgmt/zabbix22-frontend/Makefile 336884 2013-12-19 09:20:01Z vanilla $
+# $FreeBSD: head/net-mgmt/zabbix22-frontend/Makefile 351870 2014-04-22 18:31:13Z rene $
 
 PORTNAME=	zabbix22
 PKGNAMESUFFIX=	-frontend
