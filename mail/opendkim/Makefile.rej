@@ -1,0 +1,36 @@
+@@ -47,17 +46,15 @@
+ POPAUTH_DESC=		Use POP authentication DB
+ QUERY_CACHE_DESC=	Cache DNS query results locally
+ STATS_DESC=		Setup statistics tools
++DEBUG_DESC=		Build with debug symbols
+ 
+ MAKE_ARGS+=	pkgconfigdir="${PREFIX}/libdata/pkgconfig"
+ 
+-NO_STAGE=	yes
+ .include "${.CURDIR}/Makefile.options"
+ .include <bsd.port.options.mk>
+ 
+ .if ${PORT_OPTIONS:MFILTER}
+ USE_RC_SUBR=		milter-opendkim
+-MAN5+=			opendkim.conf.5
+-MAN8+=			opendkim.8
+ PLIST_SUB+=		FILTER=""
+ SUB_FILES=		pkg-message
+ WITHOUT_MILTER_CFLAGS=	yes
+@@ -168,13 +155,10 @@
+ 
+ post-install:
+ .if ! ${PORT_OPTIONS:MDEBUG} && ${PORT_OPTIONS:MFILTER}
+-	@${STRIP_CMD} ${PREFIX}/sbin/opendkim
++	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/opendkim
+ .endif
+-	@${MKDIR} ${PREFIX}/etc/mail
+-	${INSTALL_DATA} ${WRKSRC}/opendkim/opendkim.conf.sample ${PREFIX}/etc/mail/
+-.if ${PORT_OPTIONS:MFILTER}
+-	@${CAT} ${PKGMESSAGE}
+-.endif
++	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/mail
++	${INSTALL_DATA} ${WRKSRC}/opendkim/opendkim.conf.sample ${STAGEDIR}${PREFIX}/etc/mail/
+ 
+ regression-test: build
+ 	cd ${WRKSRC} ; ${MAKE} check
